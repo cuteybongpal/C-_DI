@@ -3,9 +3,10 @@ template<typename T>
 class Dependency_ptr
 {
 public:
-	T operator->() const;
-	T operator*() const;
-	Dependency_ptr operator=(Dependency_ptr* other);
+	T* operator->() const;
+	Dependency_ptr<T>& operator*() const;
+	Dependency_ptr<T>& operator=(Dependency_ptr<T>* other);
+	bool operator==(Dependency_ptr<T>* other1, other2) const;
 private:
 	T* Tptr;
 	int referenceCount;
