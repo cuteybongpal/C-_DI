@@ -1,4 +1,5 @@
 #include "Dependency_ptr.h"
+#include "NullObject.h"
 
 template <typename T>
 void Dependency_ptr<T>::SetReferenceCount(int value)
@@ -13,20 +14,19 @@ int Dependency_ptr<T>::GetReferenceCount()
 }
 
 template <typename T>
-Dependency_ptr<T>& Dependency_ptr<T>::operator*() const{
-	SetReferenceCount(GetReferenceCount() - 1);
-	return &this;
+Dependency_ptr<T>* Dependency_ptr<T>::operator*() const
+{
+	SetReferenceCount(GetReferenceCount() + 1);
+	return this;
 }
 
 template <typename T>
-T* Dependency_ptr<T>::operator->() const {
+T* Dependency_ptr<T>::operator->() const 
+{
 	return Tptr;
 }
-
 template <typename T>
-Dependency_ptr<T>& Dependency_ptr<T>::operator=(Dependency_ptr* other) {
-	if (other == nullptr)
-	{
-
-	}
+void Dependency_ptr<T>::operator=(std::nullptr_t n)
+{
+	SetReferenceCount(GetReferenceCount() - 1);
 }

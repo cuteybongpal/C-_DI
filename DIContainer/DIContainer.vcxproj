@@ -126,11 +126,13 @@
     <ClInclude Include="Dependency_ptr.h" />
     <ClInclude Include="DIContainer.h" />
     <ClInclude Include="IDependency.h" />
+    <ClInclude Include="NullObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dependency_ptr.cpp" />
     <ClCompile Include="DIContainer.cpp" />
     <ClCompile Include="IDependency.cpp" />
+    <ClCompile Include="NullObject.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

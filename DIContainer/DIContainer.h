@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include "IDependency.h"
 #include <typeindex>
+#include "Dependency_ptr.h"
 
 class DIContainer
 {
@@ -11,9 +12,9 @@ private:
 public:
 	static std::unordered_map<std::type_index, IDependency> DIPool;
 template<typename T>
-static T* GetInstance()
+static Dependency_ptr<T> GetInstance()
 {
-
+	
 }
 template<typename T>
 static void ReturnInstance(T* ptr)
