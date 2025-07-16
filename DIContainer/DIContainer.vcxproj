@@ -102,6 +102,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -116,6 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -123,16 +125,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ConstructorParam.h" />
     <ClInclude Include="Dependency_ptr.h" />
     <ClInclude Include="DIContainer.h" />
     <ClInclude Include="IDependency.h" />
     <ClInclude Include="NullObject.h" />
+    <ClInclude Include="Pooler.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ConstructorParam.cpp" />
     <ClCompile Include="Dependency_ptr.cpp" />
     <ClCompile Include="DIContainer.cpp" />
     <ClCompile Include="IDependency.cpp" />
     <ClCompile Include="NullObject.cpp" />
+    <ClCompile Include="Pooler.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

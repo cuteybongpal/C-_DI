@@ -27,6 +27,12 @@
     <ClInclude Include="NullObject.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Pooler.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstructorParam.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DIContainer.cpp">
@@ -39,6 +45,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="NullObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Pooler.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ConstructorParam.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
