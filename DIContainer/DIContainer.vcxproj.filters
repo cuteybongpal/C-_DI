@@ -33,6 +33,9 @@
     <ClInclude Include="ConstructorParam.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="wrapper_ptr.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DIContainer.cpp">
@@ -51,6 +54,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="ConstructorParam.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="wrapper_ptr.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

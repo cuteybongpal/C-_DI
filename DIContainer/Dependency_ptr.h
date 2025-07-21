@@ -1,41 +1,38 @@
 #pragma once
+#include <iostream>
+#include <typeinfo>
+#include "NullObject.h"
 
 template<typename T>
 class Dependency_ptr
 {
 public:
-	T* operator->() const
-	{
-		return Tptr;
-	}
-	Dependency_ptr<T>* operator*() const
-	{
-		SetReferenceCount(GetReferenceCount() + 1);
-		return this;
-	}
-	void operator=(std::nullptr_t n)
-	{
-		SetReferenceCount(GetReferenceCount() - 1);
-	}
-	Dependency_ptr<T>(T* ptr) 
-	{
-		Tptr = ptr;
-		referenceCount = 1;
-	}
-private:
 	T* Tptr;
 	int referenceCount;
-	void SetReferenceCount(int value) {
-		referenceCount = value;
-		if (referenceCount <= 0)
-		{
-			;
-			//todo : DIContainer에 객체 반환
-		}
-	}
-	int GetReferenceCount() 
+
+	Dependency_ptr<T>& operator=(const Dependency_ptr<T>&) = delete;
+	Dependency_ptr<T>& operator=(Dependency_ptr<T>&&) = delete;
+	void operator=(Dependency_ptr<T>* null) 
 	{
-		return referenceCount;
+		std::cout << "감소 ";
+		SetReferenceCount(GetReferenceCount() - 1);
+	}
+	Dependency_ptr<T>(const Dependency_ptr&) = delete;
+	Dependency_ptr<T>(Dependency_ptr&&) = delete;
+	Dependency_ptr<T>(T* ptr)
+	{
+		Tptr = ptr;
+		SetReferenceCount(1);
+	}
+
+	void SetReferenceCount(int value) {
+		this->referenceCount = value;
+		std::cout << referenceCount << std::endl;
+	}
+
+	int GetReferenceCount()
+	{
+		return this->referenceCount;
 	}
 };
 
