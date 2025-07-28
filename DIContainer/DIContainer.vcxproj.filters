@@ -15,16 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DIContainer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Dependency_ptr.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="IDependency.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="NullObject.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Pooler.h">
@@ -33,21 +24,12 @@
     <ClInclude Include="ConstructorParam.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="wrapper_ptr.h">
+    <ClInclude Include="Dependency.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DIContainer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Dependency_ptr.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="IDependency.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="NullObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Pooler.cpp">
@@ -59,8 +41,13 @@
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="wrapper_ptr.cpp">
+    <ClCompile Include="Dependency.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Dependency.inl">
+      <Filter>헤더 파일</Filter>
+    </None>
   </ItemGroup>
 </Project>

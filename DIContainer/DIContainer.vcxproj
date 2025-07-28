@@ -126,22 +126,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ConstructorParam.h" />
-    <ClInclude Include="Dependency_ptr.h" />
-    <ClInclude Include="DIContainer.h" />
+    <ClInclude Include="Dependency.h" />
     <ClInclude Include="IDependency.h" />
-    <ClInclude Include="NullObject.h" />
     <ClInclude Include="Pooler.h" />
-    <ClInclude Include="wrapper_ptr.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConstructorParam.cpp" />
-    <ClCompile Include="Dependency_ptr.cpp" />
-    <ClCompile Include="DIContainer.cpp" />
+    <ClCompile Include="Dependency.cpp" />
     <ClCompile Include="IDependency.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="NullObject.cpp" />
     <ClCompile Include="Pooler.cpp" />
-    <ClCompile Include="wrapper_ptr.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Dependency.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

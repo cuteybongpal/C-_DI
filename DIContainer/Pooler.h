@@ -7,9 +7,9 @@ template <typename T>
 class Pooler
 {
 public: 
-	
+	std::function<void* (ConstructorParam&)> func;
 	//°´Ã¼¸¦ °¡Á®¿È
-	T* GetInstance(ConstructorParam& param, std::function<void*(ConstructorParam&)> func)
+	T* GetInstance(ConstructorParam& param)
 	{
 		T* instance;
 		if (poolingQueue.empty())
@@ -26,8 +26,9 @@ public:
 	{
 		poolingQueue.push(instance);
 	}
-	Pooler() {
+	Pooler(std::function<void* (ConstructorParam&)> func) {
 		poolingQueue = std::queue<T*>();
+		this->func = func;
 	}
 private:
 	std::queue<T*> poolingQueue;
