@@ -70,14 +70,14 @@ public:
 		IDependency* dependency = static_cast<IDependency*>(ptr);
 		poolings[type]->ReturnInstance(dependency);
 	}
-	//Å° °ªÀ¸·Î´Â ÀÎÅÍÆäÀÌ½º¸¦ ¹Þ¾Æ¿Í¾ß ÇÔ.
-	//ValueÀÇ Å¸ÀÔÀº ¹«Á¶°Ç IDependency¿Í Key Å¸ÀÔÀ» »ó¼Ó¹Þ¾Æ¾ßÇÔ ¤·¤»?
+	//Å° ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿Í¾ï¿½ ï¿½ï¿½.
+	//Valueï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ IDependencyï¿½ï¿½ Key Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó¹Þ¾Æ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½?
 	template<typename Interface, typename Implementation> requires std::is_base_of_v<IDependency, Interface>&& std::is_base_of_v<Interface, Implementation>
 	static void Bind()
 	{
 		std::type_index type = std::type_index(typeid(Key));
 		if (poolings.contains(type))
-			throw std::runtime_error("ÀÌ¹Ì µî·ÏµÈ Å° °ªÀÔ´Ï´Ù.");
+			throw std::runtime_error("ï¿½Ì¹ï¿½ ï¿½ï¿½Ïµï¿½ Å° ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
 		std::function<void* (ConstructorParam& param)>* func = new std::function<void* (ConstructorParam & param)>([](ConstructorParam& param) {return new Implementation(param); });
 		poolings.insert({ type, new Pooler<IDependency*>(func) });
 	}

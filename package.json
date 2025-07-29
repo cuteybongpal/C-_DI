@@ -1,0 +1,15 @@
+{
+    "name": "DIContainer",
+    "version": "1.0.0",
+    "description": "DIContainer for c++",
+    "author": {
+    "name": "김효원",
+    "email": "khw33352182@gmail.com",
+    "github": "https://github.com/cuteybongpal"
+    },
+    "license": "CC0-1.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cuteybongpal/C-_DI"
+    }
+}
