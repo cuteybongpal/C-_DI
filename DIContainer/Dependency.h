@@ -51,34 +51,34 @@ private:
 	~DIContainer() = delete;
 	static std::unordered_map<std::type_index, Pooler<IDependency*>*> poolings;
 public:
-	template <typename Key>
-	static Dependency_ptr<Key> GetInstance(ConstructorParam& param) requires std::is_base_of_v<IDependency, Key>
+	template <typename Interface>
+	static Dependency_ptr<Interface> GetInstance(ConstructorParam& param) requires std::is_base_of_v<IDependency, Interface>
 	{
 		std::type_index type = std::type_index(typeid(Key));
 
 		IDependency* instance = poolings[type]->GetInstance(param);
-		Dependency_Inner_ptr<Key>* inner_ptr = new Dependency_Inner_ptr<Key>(dynamic_cast<Key*>(instance));
-		Dependency_ptr<Key> dependency_ptr = Dependency_ptr<Key>(inner_ptr);
+		Dependency_Inner_ptr<Interface>* inner_ptr = new Dependency_Inner_ptr<Interface>(dynamic_cast<Interface*>(instance));
+		Dependency_ptr<Interface> dependency_ptr = Dependency_ptr<Interface>(inner_ptr);
 
 		return dependency_ptr;
 	}
 
-	template <typename Key>
-	static void ReturnInstance(Key* ptr) requires std::is_base_of_v<IDependency, Key>
+	template <typename Interface>
+	static void ReturnInstance(Interface* ptr) requires std::is_base_of_v<IDependency, Interface>
 	{
-		std::type_index type = std::type_index(typeid(Key));
+		std::type_index type = std::type_index(typeid(Interface));
 		IDependency* dependency = static_cast<IDependency*>(ptr);
 		poolings[type]->ReturnInstance(dependency);
 	}
 	//키 값으로는 인터페이스를 받아와야 함.
 	//Value의 타입은 무조건 IDependency와 Key 타입을 상속받아야함 ㅇㅋ?
-	template<typename Key, typename Value> requires std::is_base_of_v<IDependency, Key>&& std::is_base_of_v<Key, Value>
+	template<typename Interface, typename Implementation> requires std::is_base_of_v<IDependency, Interface>&& std::is_base_of_v<Interface, Implementation>
 	static void Bind()
 	{
 		std::type_index type = std::type_index(typeid(Key));
 		if (poolings.contains(type))
-			throw "이미 등록된 키 값입니다.";
-		std::function<void* (ConstructorParam& param)>* func = new std::function<void* (ConstructorParam & param)>([](ConstructorParam& param) {return new Value(param); });
+			throw std::runtime_error("이미 등록된 키 값입니다.");
+		std::function<void* (ConstructorParam& param)>* func = new std::function<void* (ConstructorParam & param)>([](ConstructorParam& param) {return new Implementation(param); });
 		poolings.insert({ type, new Pooler<IDependency*>(func) });
 	}
 };
