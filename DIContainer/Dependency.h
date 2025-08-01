@@ -49,12 +49,13 @@ class DIContainer
 private:
 	DIContainer() = delete;
 	~DIContainer() = delete;
-	static std::unordered_map<std::type_index, Pooler<IDependency*>*> poolings;
+	static std::unordered_map<std::type_index, Pooler<IDependency>*> poolings;
+	static bool isInitialized;
 public:
 	template <typename Interface>
 	static Dependency_ptr<Interface> GetInstance(ConstructorParam& param) requires std::is_base_of_v<IDependency, Interface>
 	{
-		std::type_index type = std::type_index(typeid(Key));
+		std::type_index type = std::type_index(typeid(Interface));
 
 		IDependency* instance = poolings[type]->GetInstance(param);
 		Dependency_Inner_ptr<Interface>* inner_ptr = new Dependency_Inner_ptr<Interface>(dynamic_cast<Interface*>(instance));
@@ -71,15 +72,23 @@ public:
 		poolings[type]->ReturnInstance(dependency);
 	}
 	//키 값으로는 인터페이스를 받아와야 함.
-	//Value의 타입은 무조건 IDependency와 Key 타입을 상속받아야함 ㅇㅋ?
+	//Value의 타입은 무조건 IDependency와 Key 타입을 상속std::unordered_map<std::type_index, Pooler<IDependency>*> *poolings;받아야함 ㅇㅋ?
 	template<typename Interface, typename Implementation> requires std::is_base_of_v<IDependency, Interface>&& std::is_base_of_v<Interface, Implementation>
 	static void Bind()
 	{
-		std::type_index type = std::type_index(typeid(Key));
+		if (!isInitialized)
+			poolings = std::unordered_map<std::type_index, Pooler<IDependency>*>();
+
+		isInitialized = true;
+		std::type_index type = std::type_index(typeid(Interface));
 		if (poolings.contains(type))
 			throw std::runtime_error("이미 등록된 키 값입니다.");
-		std::function<void* (ConstructorParam& param)>* func = new std::function<void* (ConstructorParam & param)>([](ConstructorParam& param) {return new Implementation(param); });
-		poolings.insert({ type, new Pooler<IDependency*>(func) });
+
+		std::function<void* (ConstructorParam&)> func = std::function<void* (ConstructorParam&)> ([](ConstructorParam& param) {return new Implementation(param); });
+		Pooler<IDependency>* pooler = new Pooler<IDependency>(func);
+		poolings.insert({ type, pooler});
+		
+		std::cout << "성공" << std::endl;
 	}
 };
 

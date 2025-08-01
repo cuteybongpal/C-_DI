@@ -125,17 +125,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AutoBinder.h" />
     <ClInclude Include="ConstructorParam.h" />
     <ClInclude Include="Dependency.h" />
     <ClInclude Include="IDependency.h" />
     <ClInclude Include="Pooler.h" />
+    <ClInclude Include="TestInterface.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AutoBinder.cpp" />
     <ClCompile Include="ConstructorParam.cpp" />
     <ClCompile Include="Dependency.cpp" />
     <ClCompile Include="IDependency.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pooler.cpp" />
+    <ClCompile Include="TestInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Dependency.inl" />
