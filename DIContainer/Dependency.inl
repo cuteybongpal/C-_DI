@@ -46,7 +46,7 @@ Dependency_ptr<T> Dependency_ptr<T>::operator*()
 template <typename T>
 Dependency_ptr<T>::Dependency_ptr(Dependency_Inner_ptr<T>* ptr)
 {
-	ptr = ptr;
+	this->ptr = ptr;
 }
 
 template <typename T>

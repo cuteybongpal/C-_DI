@@ -4,7 +4,6 @@
 	class AutoBinder_##Implementation##__LINE__ {                         \
 	public:                                                               \
 		AutoBinder_##Implementation##__LINE__() {                         \
-			std::cout << "Binding: " #Interface " -> " #Implementation "\n"; \
 			DIContainer::Bind<Interface, Implementation>();               \
 		}                                                                  \
 	};                                                                     \

@@ -14,7 +14,7 @@ public:
 		T* instance;
 		if (poolingQueue.empty())
 		{
-			instance = dynamic_cast<T*>(func(param));
+			instance = (T*)(func(param));
 			return instance;
 		}
 		instance = poolingQueue.front();

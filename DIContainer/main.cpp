@@ -5,8 +5,7 @@
 int main() 
 {
 	ConstructorParam param = ConstructorParam();
-	DIContainer::GetInstance<TestInterface>(param);
-
-
-	std::cout << "dfafda" << std::endl;
+	Dependency_ptr<TestInterface> test = DIContainer::GetInstance<TestInterface>(param);
+	test->Reset();
+	test->func1();
 }

@@ -87,8 +87,6 @@ public:
 		std::function<void* (ConstructorParam&)> func = std::function<void* (ConstructorParam&)> ([](ConstructorParam& param) {return new Implementation(param); });
 		Pooler<IDependency>* pooler = new Pooler<IDependency>(func);
 		poolings.insert({ type, pooler});
-		
-		std::cout << "¼º°ø" << std::endl;
 	}
 };
 
